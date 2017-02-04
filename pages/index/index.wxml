@@ -1,0 +1,82 @@
+<!--index.wxml-->
+<view class="ball" bindtap="showbtn" bindtouchstart="start" bindtouchmove="move" style="left:{{ox}}px;top:{{oy}}px">
+  <image src="../../images/jia.png"></image>
+</view>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="bg-box">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <template is="cc" data="{{...item}}" wx:for="{{imgUrls}}"/>
+    </swiper-item>
+  </block>
+</swiper>
+<template name="cc" >
+  <navigator url="../lcon/lcon?id={{id}}">
+     <view class="banner-box"> 
+      <image src="../../images/bg.png" class="slide-image" />
+      <text class="spanbox">{{title}}</text>
+      </view>
+   </navigator>
+  </template>
+<!--模板-->
+<scroll-view scroll-y="true">
+  <template is="msgItem" data="{{...item}}" wx:for="{{con}}"/>
+  <template name="msgItem" >
+  <navigator url="../lcon/lcon?id={{id}}">
+      <view class="con-box">
+          <text class="h1">{{title}}</text>
+          <image src="{{images}}" class="h1-img"></image>
+      </view>
+   </navigator>
+  </template>
+</scroll-view>      
+<!--遮罩-->
+<view class="mark" style="display:{{show?'block':''}}" bindtap="showbtn"></view>
+<!--侧导航-->
+<scroll-view class="sec-box {{show?'show':''}}" scroll-y="true">
+  <view class="head">
+      <view class="head-tou"></view>
+      <text class="name">请登录</text>
+  </view>
+  <view class="icon">
+    <view class="icon-s">
+      <image class="icon-img" src="../../images/b1.png"></image>
+     收藏
+    </view>
+    <view class="icon-s">
+      <image class="icon-img" src="../../images/c1.png"></image>
+     消息
+    </view>
+    <view class="icon-s">
+      <image class="icon-img" src="../../images/zhou1.png"></image>
+     设置
+    </view>
+  </view>  
+  <view class="tab-box">
+      <view class="tab-list-show">
+        <image class="tab-img" src="../../images/a1.png"></image>
+        <text class="tab-a">首页</text>
+        <text class="tab-r">></text>
+      </view>
+      <!--侧导航模板-->
+      <template is="pdd" data="{{...item}}" wx:for="{{title}}"/>
+      <template name="pdd">   
+        <navigator url="../list/list?id={{id}}" class="tab-list">
+          <text class="tab-a">{{name}}</text>
+          <text class="tab-r">+</text>
+        </navigator>
+      </template>
+  </view>
+  <view class="night">
+      <view class="night-1">
+        <image src="../../images/yang.png"></image>
+        <text>完成</text>
+      </view>
+      <view class="night-1">
+        <image src="../../images/yue.png"></image>
+        <text>夜间</text>
+      </view>
+  </view>
+</scroll-view>
+
+

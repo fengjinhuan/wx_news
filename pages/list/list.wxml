@@ -1,0 +1,18 @@
+<!--pages/list/list.wxml-->
+
+     <view class="banner-box"> 
+      <image src="../../images/bg.png" class="slide-image" />
+      <text class="spanbox">{{bb}}</text>
+      </view>
+ 
+
+<template is="msgItem" data="{{...item}}" wx:for="{{zz}}"/>
+<template name="msgItem" >
+ <navigator url="../lcon/lcon?id={{id}}">
+      <view class="con-box" >
+          <text class="h1">{{title}}</text>
+          <image src="{{images}}" class="h1-img"></image>
+      </view>
+</navigator>
+  </template>
+
